@@ -1,34 +1,47 @@
 using UnityEngine;
 using LevelData;
+using System.Collections.Generic;
 using System;
 
 public class JsonToLevelData
 {
     private Data data;
+    private List<string> question = new List<string>();
+    private List<string> answer = new List<string>();
+    private List<string> timeofday = new List<string>();
+    private List<string> timeofyear = new List<string>();
 
     public JsonToLevelData(String json)
     {
         data = JsonUtility.FromJson<Data>(json);
+        foreach (var item in data.Datas)
+        {
+            question.Add(item.Question);
+            answer.Add(item.Answer);
+            timeofday.Add(item.TimeofDay);
+            timeofyear.Add(item.TimeofYear);
+        }
     }
 
-    public string GetQuestion()
+    public List<string> GetQuestion()
     {
-        return data.Datas[0].Question;
+
+        return question;
     }
 
-    public string GetAnswer()
+    public List<string> GetAnswer()
     {
-        return data.Datas[0].Answer;
+        return answer;
     }
 
-    public string GetTimeofDay()
+    public List<string> GetTimeofDay()
     {
-        return data.Datas[0].TimeofDay;
+        return timeofday;
     }
 
-    public string GetTimeofYear()
+    public List<string> GetTimeofYear()
     {
-        return data.Datas[0].TimeofYear;
+        return timeofyear;
     }
 
 
