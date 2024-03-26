@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
-    public Transform centerPoint; // ÖĞĞÄµã
-    public float rotationSpeed = 10f; // ×Ô×ªËÙ¶È
-    public float orbitSpeed = 20f; // ¹«×ªËÙ¶È
-    public float distanceFromCenter = 5f; // ¾àÀëÖĞĞÄµãµÄ¾àÀë
-    public Transform objectToOrbit; // Î§ÈÆ¹«×ªµÄ¶ÔÏó
+    public float rotationSpeed = 10f; // è‡ªè½¬é€Ÿåº¦
+    public float orbitSpeed = 20f; // å…¬è½¬é€Ÿåº¦
+    public float distanceFromCenter = 5f; // è·ç¦»ä¸­å¿ƒç‚¹çš„è·ç¦»
+    public Transform objectToOrbit; // å›´ç»•å…¬è½¬çš„å¯¹è±¡
+
+    private Transform centerPoint; // ä¸­å¿ƒç‚¹
+
+    private void Start()
+    {
+        centerPoint = transform.Find("Galaxy");
+    }
 
     void Update()
     {
-        // ×Ô×ª
+        // è‡ªè½¬
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
 
-        // ¼ÆËãÎ§ÈÆÖĞĞÄµãµÄÎ»ÖÃ
+        // è®¡ç®—å›´ç»•ä¸­å¿ƒç‚¹çš„ä½ç½®
         Vector3 orbitPosition = (transform.position - centerPoint.position).normalized * distanceFromCenter + centerPoint.position;
 
-        // ¸üĞÂ¶ÔÏóÎ»ÖÃ
+        // æ›´æ–°å¯¹è±¡ä½ç½®
         transform.position = orbitPosition;
 
-        // ¹«×ª
+        // å…¬è½¬
         if (objectToOrbit != null)
         {
             transform.RotateAround(centerPoint.position, Vector3.up, orbitSpeed * Time.deltaTime);
