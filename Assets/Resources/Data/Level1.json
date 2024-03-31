@@ -1,28 +1,28 @@
 {
     "Data": [
         {
-            "Question": "",
-            "Answer": "春至",
-            "TimeofDay": "",
-            "TimeofYear": ""
+            "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
+            "Answer": "春分",
+            "TimeofDay": "80",
+            "TimeofYear": "2023"
         },
-        {
-            "Question": "",
-            "Answer": "夏至",
-            "TimeofDay": "",
-            "TimeofYear": ""
-        },
-        {
-            "Question": "",
-            "Answer": "秋至",
-            "TimeofDay": "",
-            "TimeofYear": ""
-        },
-        {
-            "Question": "",
-            "Answer": "冬至",
-            "TimeofDay": "",
-            "TimeofYear": ""
-        }
+      {
+        "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
+        "Answer": "夏至",
+        "TimeofDay": "172",
+        "TimeofYear": "2023"
+      },
+      {
+        "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
+        "Answer": "秋分",
+        "TimeofDay": "265",
+        "TimeofYear": "2023"
+      },
+      {
+        "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
+        "Answer": "冬至",
+        "TimeofDay": "356",
+        "TimeofYear": "2023"
+      }
     ]
 }
