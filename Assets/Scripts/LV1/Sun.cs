@@ -2,21 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using LevelData;
 
-public class Sun : LV1Maneger
+public class Sun : MonoBehaviour
 {
     float springSolsticeDay = 79;        // 春分：通常在一年中的第79至80天（即3月20日或21日）
     float summerSolsticeDay = 171;        // 夏至：通常在一年中的第171至172天（即6月20日或21日）
     float autumnSolsticeDay = 264;        // 秋分：通常在一年中的第264至265天（即9月22日或23日）
     float winterSolsticeDay = 355;        // 冬至：通常在一年中的第355至356天（即12月21日或22日）
     //Debug.Log(" : " + );
+    LV1Maneger lv1Maneger;
 
     public Transform sunTransform; // 定向光源对象的Transform组件
     public Transform sunTransformson;
     [SerializeField] private Vector3 initialRotation; // 初始旋转角度
     [SerializeField] private Vector3 initialRotationson; // 初始旋转角度
-    public float timeofDay = 0;//24小时时间
-    public float timeofYear = 0;//356日时间
+    [SerializeField] public static float TimeofDay = 0;//24小时时间
+    [SerializeField] public static float TimeofYear = 0;//356日时间
     public float rotationSpeed = 10f; // 旋转速度
     void Start()
     {
@@ -27,8 +29,8 @@ public class Sun : LV1Maneger
 
     private void Update()
     {
-        RotateSunDay(timeofDay);
-        RotateSunYear(timeofYear);
+        RotateSunDay(TimeofDay);
+        RotateSunYear(TimeofYear);
     }
     public void RotateSunDay(float timeOfDay)
     {
@@ -73,12 +75,13 @@ public class Sun : LV1Maneger
             // 冬至到新年期间
             rotationAngle = Mathf.Lerp(40f, 50f, (timeOfYear - winterSolsticeDay) / (365 - winterSolsticeDay + springSolsticeDay));
         }
-        Debug.Log(rotationAngle);
+        //Debug.Log(rotationAngle);
         // 应用旋转角度到定向光源对象
         float currentAngle = Mathf.MoveTowardsAngle(sunTransformson.localEulerAngles.x, rotationAngle, rotationSpeed *0.05f * Time.deltaTime);
 
         // 将旋转应用到物体的本地坐标系上
         sunTransformson.localRotation = Quaternion.Euler(currentAngle, sunTransformson.localEulerAngles.y, sunTransformson.localEulerAngles.z);
     }
+
 }
 
