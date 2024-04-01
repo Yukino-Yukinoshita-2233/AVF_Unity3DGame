@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 
 [RequireComponent(typeof(Camera))]
 public class CameraController : MonoBehaviour
@@ -31,6 +33,8 @@ public class CameraController : MonoBehaviour
         var look = inputActions.Player.Look.ReadValue<Vector2>();
         var move = inputActions.Player.Move.ReadValue<Vector2>();
 
+        CamUpDown();
+
         // Update orientation first, then move. Otherwise move orientation will lag
         // behind by one frame.
         Look(look);
@@ -56,5 +60,19 @@ public class CameraController : MonoBehaviour
         rotation.y += rotate.x * scaledRotateSpeed;
         rotation.x = Mathf.Clamp(rotation.x - rotate.y * scaledRotateSpeed, -89, 89);
         transform.localEulerAngles = rotation;
+    }
+
+    private void CamUpDown()
+    {
+        var up = Input.GetKey(KeyCode.Q);
+        var down = Input.GetKey(KeyCode.E);
+        if (up)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + moveSpeed * Time.deltaTime, transform.position.z);
+        }
+        if (down)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - moveSpeed * Time.deltaTime, transform.position.z);
+        }
     }
 }
