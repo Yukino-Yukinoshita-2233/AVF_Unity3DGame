@@ -1,28 +1,26 @@
-{
-    "Data": [
-        {
-            "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
-            "Answer": "春分",
-            "TimeofDay": "80",
-            "TimeofYear": "2023"
-        },
-      {
+[
+    {
         "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
+        "Answer": "春分",
+        "TimeofDay": "12",
+        "TimeofYear": "80"
+    },
+    {
+        "Question": "《周髀算经》卷上：故冬至日晷丈三尺五寸，夏至日晷尺六寸。冬至日晷长，夏至日晷短。",
         "Answer": "夏至",
-        "TimeofDay": "172",
-        "TimeofYear": "2023"
-      },
-      {
+        "TimeofDay": "12",
+        "TimeofYear": "172"
+    },
+    {
         "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
         "Answer": "秋分",
-        "TimeofDay": "265",
-        "TimeofYear": "2023"
-      },
-      {
-        "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
+        "TimeofDay": "12",
+        "TimeofYear": "265"
+    },
+    {
+        "Question": "《周髀算经》卷上：故冬至日晷丈三尺五寸，夏至日晷尺六寸。冬至日晷长，夏至日晷短。",
         "Answer": "冬至",
-        "TimeofDay": "356",
-        "TimeofYear": "2023"
-      }
-    ]
-}
+        "TimeofDay": "12",
+        "TimeofYear": "356"
+    }
+]

@@ -1,20 +1,19 @@
-using UnityEngine;
 using LevelData;
+using Newtonsoft.Json;
 using System.Collections.Generic;
-using System;
 
 public class JsonToLevelData
 {
-    private Data data;
+    private List<Data> data = new List<Data>();
     private List<string> question = new List<string>();
     private List<string> answer = new List<string>();
     private List<string> timeofday = new List<string>();
     private List<string> timeofyear = new List<string>();
 
-    public JsonToLevelData(String json)
+    public JsonToLevelData(string json)
     {
-        data = JsonUtility.FromJson<Data>(json);
-        foreach (var item in data.Datas)
+        data = JsonConvert.DeserializeObject<List<Data>>(json);
+        foreach (var item in data)
         {
             question.Add(item.Question);
             answer.Add(item.Answer);
@@ -43,7 +42,5 @@ public class JsonToLevelData
     {
         return timeofyear;
     }
-
-
 
 }
