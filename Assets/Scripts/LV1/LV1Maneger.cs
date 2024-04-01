@@ -10,36 +10,49 @@ public class LV1Maneger : MonoBehaviour
     private JsonToLevelData jsonToLevelData;
     [SerializeField] Text question = null;
     [SerializeField] Text answer = null;
-
-
-
+    [SerializeField] Button lookAnswerButtom = null;
+    [SerializeField] Button nextQuestionButtom = null;
+    bool islookButton = false;
+    int rangeSum = 0;
+    int questionsCount = 0;
     private void Start()
     {
         var json = Resources.Load<TextAsset>("Data/Level1").text;
-        if (json != null)
-        {
-            Debug.Log("Can't get Level1");
-        }
+        if (json == null) { Debug.Log("Can't get Level1"); }
         // 创建JsonToLevelData实例并传递JSON数据
         jsonToLevelData = new JsonToLevelData(json);
+        SelectQuestion(jsonToLevelData);
+        lookAnswerButtom.onClick.AddListener(getlookAnswerButtomdown);
+        nextQuestionButtom.onClick.AddListener(getnextQuestionbuttom);
 
+    }
+
+    void SelectQuestion(JsonToLevelData jsonToLevelData)
+    {        
         // 获取问题和答案列表
         var questions = jsonToLevelData.GetQuestion();
         var answers = jsonToLevelData.GetAnswer();
         var TimeofDay = jsonToLevelData.GetTimeofDay();
         var TimeofYear = jsonToLevelData.GetTimeofYear();
-        SelectQuestion(questions, answers,TimeofDay,TimeofYear);
-
+        questionsCount = questions.Count;
+        // 输出数据到场景
+        question.text = questions[rangeSum];
+        if (islookButton == true) { answer.text = answers[rangeSum]; }
+        else { answer.text = null; }
+        Sun.TimeofDay = float.Parse(TimeofDay[rangeSum]);
+        Sun.TimeofYear = float.Parse(TimeofYear[rangeSum]);
     }
 
-    void SelectQuestion(List<string> questions, List<string> answers,List<string> timeofDay, List<string> timeofYear)
+    void getlookAnswerButtomdown()
     {
-        int rangeSum = Random.Range(0, questions.Count);
-        question.text = questions[rangeSum];
-        answer.text = answers[rangeSum];
-        Sun.TimeofDay = float.Parse(timeofDay[rangeSum]);
-        Sun.TimeofYear = float.Parse(timeofYear[rangeSum]);
-        Debug.Log("Sun.TimeofDay: " + Sun.TimeofDay);
-        Debug.Log("Sun.TimeofYear: " + Sun.TimeofYear);
+        islookButton = (islookButton == false) ? true : false;
+        SelectQuestion(jsonToLevelData);
+
+    }
+    void getnextQuestionbuttom()
+    {
+        islookButton = false;
+        rangeSum = Random.Range(0, questionsCount);
+        SelectQuestion(jsonToLevelData);
     }
 }
