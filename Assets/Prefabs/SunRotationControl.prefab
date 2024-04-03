@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 6496780798587264174}
   - component: {fileID: 833047921391628417}
   m_Layer: 0
-  m_Name: SunRotarionControl
+  m_Name: SunRotationControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
