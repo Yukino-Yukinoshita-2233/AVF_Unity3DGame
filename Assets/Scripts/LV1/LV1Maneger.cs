@@ -17,6 +17,7 @@ public class LV1Maneger : MonoBehaviour
     int questionsCount = 0;
     private void Start()
     {
+        //question = gameObject.GetComponent<Text>();
         var json = Resources.Load<TextAsset>("Data/Level1").text;
         if (json == null) { Debug.Log("Can't get Level1"); }
         // 创建JsonToLevelData实例并传递JSON数据
