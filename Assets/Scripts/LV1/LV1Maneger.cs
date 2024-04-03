@@ -20,7 +20,7 @@ public class LV1Maneger : MonoBehaviour
         //question = gameObject.GetComponent<Text>();
         var json = Resources.Load<TextAsset>("Data/Level1").text;
         if (json == null) { Debug.Log("Can't get Level1"); }
-        // ´´½¨JsonToLevelDataÊµÀı²¢´«µİJSONÊı¾İ
+        // åˆ›å»ºJsonToLevelDataå®ä¾‹å¹¶ä¼ é€’JSONæ•°æ®
         jsonToLevelData = new JsonToLevelData(json);
         SelectQuestion(jsonToLevelData);
         lookAnswerButtom.onClick.AddListener(getlookAnswerButtomdown);
@@ -30,13 +30,13 @@ public class LV1Maneger : MonoBehaviour
 
     void SelectQuestion(JsonToLevelData jsonToLevelData)
     {        
-        // »ñÈ¡ÎÊÌâºÍ´ğ°¸ÁĞ±í
+        // è·å–é—®é¢˜å’Œç­”æ¡ˆåˆ—è¡¨
         var questions = jsonToLevelData.GetQuestion();
         var answers = jsonToLevelData.GetAnswer();
         var TimeofDay = jsonToLevelData.GetTimeofDay();
         var TimeofYear = jsonToLevelData.GetTimeofYear();
         questionsCount = questions.Count;
-        // Êä³öÊı¾İµ½³¡¾°
+        // è¾“å‡ºæ•°æ®åˆ°åœºæ™¯
         question.text = questions[rangeSum];
         if (islookButton == true) { answer.text = answers[rangeSum]; }
         else { answer.text = null; }
