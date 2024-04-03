@@ -6,23 +6,23 @@ using LevelData;
 
 public class Sun : MonoBehaviour
 {
-    float springSolsticeDay = 79;        // ´º·Ö£ºÍ¨³£ÔÚÒ»ÄêÖĞµÄµÚ79ÖÁ80Ìì£¨¼´3ÔÂ20ÈÕ»ò21ÈÕ£©
-    float summerSolsticeDay = 171;        // ÏÄÖÁ£ºÍ¨³£ÔÚÒ»ÄêÖĞµÄµÚ171ÖÁ172Ìì£¨¼´6ÔÂ20ÈÕ»ò21ÈÕ£©
-    float autumnSolsticeDay = 264;        // Çï·Ö£ºÍ¨³£ÔÚÒ»ÄêÖĞµÄµÚ264ÖÁ265Ìì£¨¼´9ÔÂ22ÈÕ»ò23ÈÕ£©
-    float winterSolsticeDay = 355;        // ¶¬ÖÁ£ºÍ¨³£ÔÚÒ»ÄêÖĞµÄµÚ355ÖÁ356Ìì£¨¼´12ÔÂ21ÈÕ»ò22ÈÕ£©
+    float springSolsticeDay = 79;        // æ˜¥åˆ†ï¼šé€šå¸¸åœ¨ä¸€å¹´ä¸­çš„ç¬¬79è‡³80å¤©ï¼ˆå³3æœˆ20æ—¥æˆ–21æ—¥ï¼‰
+    float summerSolsticeDay = 171;        // å¤è‡³ï¼šé€šå¸¸åœ¨ä¸€å¹´ä¸­çš„ç¬¬171è‡³172å¤©ï¼ˆå³6æœˆ20æ—¥æˆ–21æ—¥ï¼‰
+    float autumnSolsticeDay = 264;        // ç§‹åˆ†ï¼šé€šå¸¸åœ¨ä¸€å¹´ä¸­çš„ç¬¬264è‡³265å¤©ï¼ˆå³9æœˆ22æ—¥æˆ–23æ—¥ï¼‰
+    float winterSolsticeDay = 355;        // å†¬è‡³ï¼šé€šå¸¸åœ¨ä¸€å¹´ä¸­çš„ç¬¬355è‡³356å¤©ï¼ˆå³12æœˆ21æ—¥æˆ–22æ—¥ï¼‰
     //Debug.Log(" : " + );
     LV1Maneger lv1Maneger;
 
-    public Transform sunTransform; // ¶¨Ïò¹âÔ´¶ÔÏóµÄTransform×é¼ş
+    public Transform sunTransform; // å®šå‘å…‰æºå¯¹è±¡çš„Transformç»„ä»¶
     public Transform sunTransformson;
-    [SerializeField] private Vector3 initialRotation; // ³õÊ¼Ğı×ª½Ç¶È
-    [SerializeField] private Vector3 initialRotationson; // ³õÊ¼Ğı×ª½Ç¶È
-    [SerializeField] public static float TimeofDay = 0;//24Ğ¡Ê±Ê±¼ä
-    [SerializeField] public static float TimeofYear = 0;//356ÈÕÊ±¼ä
-    public float rotationSpeed = 10f; // Ğı×ªËÙ¶È
+    [SerializeField] private Vector3 initialRotation; // åˆå§‹æ—‹è½¬è§’åº¦
+    [SerializeField] private Vector3 initialRotationson; // åˆå§‹æ—‹è½¬è§’åº¦
+    [SerializeField] public static float TimeofDay = 0;//24å°æ—¶æ—¶é—´
+    [SerializeField] public static float TimeofYear = 0;//356æ—¥æ—¶é—´
+    public float rotationSpeed = 10f; // æ—‹è½¬é€Ÿåº¦
     void Start()
     {
-        // ±£´æ³õÊ¼Ğı×ª½Ç¶È
+        // ä¿å­˜åˆå§‹æ—‹è½¬è§’åº¦
         initialRotation = sunTransform.localEulerAngles;
         initialRotationson = sunTransformson.localEulerAngles;
     }
@@ -34,52 +34,52 @@ public class Sun : MonoBehaviour
     }
     public void RotateSunDay(float timeOfDay)
     {
-        // ¼ÆËãÊ±¼äÔÚÒ»ÌìÖĞµÄ°Ù·Ö±È
+        // è®¡ç®—æ—¶é—´åœ¨ä¸€å¤©ä¸­çš„ç™¾åˆ†æ¯”
         float currentTimeOfDay = Mathf.Repeat(timeOfDay, 24f) / 24f;
-        // ¸ù¾İÊ±¼ä¼ÆËãÌ«ÑôµÄĞı×ª½Ç¶È£¨´Ó¶«Éıµ½Î÷Âä£©
+        // æ ¹æ®æ—¶é—´è®¡ç®—å¤ªé˜³çš„æ—‹è½¬è§’åº¦ï¼ˆä»ä¸œå‡åˆ°è¥¿è½ï¼‰
         float rotationAngle = Mathf.Lerp(0f, 360f, currentTimeOfDay) + 180;
-        // Ó¦ÓÃĞı×ª½Ç¶Èµ½¶¨Ïò¹âÔ´¶ÔÏó
+        // åº”ç”¨æ—‹è½¬è§’åº¦åˆ°å®šå‘å…‰æºå¯¹è±¡
         float currentAngle = Mathf.MoveTowardsAngle(sunTransform.eulerAngles.z, rotationAngle, rotationSpeed * Time.deltaTime);
         sunTransform.rotation = Quaternion.Euler(initialRotation.x, initialRotation.y, currentAngle);
 
     }
     public void RotateSunYear(float timeOfYear)
     {
-        //½« timeOfYear ÏŞÖÆÔÚÒ»ÄêµÄ·¶Î§ÄÚ
+        //å°† timeOfYear é™åˆ¶åœ¨ä¸€å¹´çš„èŒƒå›´å†…
         timeOfYear = Mathf.Repeat(timeOfYear, 365f);
 
         float rotationAngle = 0f;
 
         if (timeOfYear >= springSolsticeDay && timeOfYear < summerSolsticeDay)
         {
-            // ´ºÖÁµ½ÏÄÖÁÆÚ¼ä
+            // æ˜¥è‡³åˆ°å¤è‡³æœŸé—´
             rotationAngle = Mathf.Lerp(50f, 60f, (timeOfYear - springSolsticeDay) / (summerSolsticeDay - springSolsticeDay));
         }
         else if (timeOfYear >= summerSolsticeDay && timeOfYear < autumnSolsticeDay)
         {
-            // ÏÄÖÁµ½ÇïÖÁÆÚ¼ä
+            // å¤è‡³åˆ°ç§‹è‡³æœŸé—´
             rotationAngle = Mathf.Lerp(60f, 50f, (timeOfYear - summerSolsticeDay) / (autumnSolsticeDay - summerSolsticeDay));
         }
         else if (timeOfYear >= autumnSolsticeDay && timeOfYear < winterSolsticeDay)
         {
-            // ÇïÖÁµ½¶¬ÖÁÆÚ¼ä
+            // ç§‹è‡³åˆ°å†¬è‡³æœŸé—´
             rotationAngle = Mathf.Lerp(50f, 40f, (timeOfYear - autumnSolsticeDay) / (winterSolsticeDay - autumnSolsticeDay));
         }
         else if (timeOfYear < springSolsticeDay)
         {
-            // ĞÂÄêµ½´º·ÖÆÚ¼ä
+            // æ–°å¹´åˆ°æ˜¥åˆ†æœŸé—´
             rotationAngle = Mathf.Lerp(40f, 50f, (timeOfYear +365 - winterSolsticeDay) / (365 - winterSolsticeDay + springSolsticeDay));
         }
         else if (timeOfYear >= winterSolsticeDay)
         {
-            // ¶¬ÖÁµ½ĞÂÄêÆÚ¼ä
+            // å†¬è‡³åˆ°æ–°å¹´æœŸé—´
             rotationAngle = Mathf.Lerp(40f, 50f, (timeOfYear - winterSolsticeDay) / (365 - winterSolsticeDay + springSolsticeDay));
         }
         //Debug.Log(rotationAngle);
-        // Ó¦ÓÃĞı×ª½Ç¶Èµ½¶¨Ïò¹âÔ´¶ÔÏó
+        // åº”ç”¨æ—‹è½¬è§’åº¦åˆ°å®šå‘å…‰æºå¯¹è±¡
         float currentAngle = Mathf.MoveTowardsAngle(sunTransformson.localEulerAngles.x, rotationAngle, rotationSpeed *0.05f * Time.deltaTime);
 
-        // ½«Ğı×ªÓ¦ÓÃµ½ÎïÌåµÄ±¾µØ×ø±êÏµÉÏ
+        // å°†æ—‹è½¬åº”ç”¨åˆ°ç‰©ä½“çš„æœ¬åœ°åæ ‡ç³»ä¸Š
         sunTransformson.localRotation = Quaternion.Euler(currentAngle, sunTransformson.localEulerAngles.y, sunTransformson.localEulerAngles.z);
     }
 
