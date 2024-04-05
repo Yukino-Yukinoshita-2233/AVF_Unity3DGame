@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class LV1Maneger : MonoBehaviour
 {
     private JsonToLevelData jsonToLevelData;
-    [SerializeField] Text question = null;
-    [SerializeField] Text answer = null;
-    [SerializeField] Button lookAnswerButtom = null;
-    [SerializeField] Button nextQuestionButtom = null;
+    [SerializeField] Text question;
+    [SerializeField] Text answer;
+    [SerializeField] Button lookAnswerButtom;
+    [SerializeField] Button nextQuestionButtom;
     bool islookButton = false;
     int rangeSum = 0;
     int questionsCount = 0;
@@ -23,8 +23,8 @@ public class LV1Maneger : MonoBehaviour
         // 创建JsonToLevelData实例并传递JSON数据
         jsonToLevelData = new JsonToLevelData(json);
         SelectQuestion(jsonToLevelData);
-        lookAnswerButtom.onClick.AddListener(getlookAnswerButtomdown);
-        nextQuestionButtom.onClick.AddListener(getnextQuestionbuttom);
+        lookAnswerButtom.onClick.AddListener(GetlookAnswerButtomdown);
+        nextQuestionButtom.onClick.AddListener(GetnextQuestionbuttom);
 
     }
 
@@ -44,14 +44,18 @@ public class LV1Maneger : MonoBehaviour
         Sun.TimeofYear = float.Parse(TimeofYear[rangeSum]);
     }
 
-    void getlookAnswerButtomdown()
+    void GetlookAnswerButtomdown()
     {
         islookButton = (islookButton == false) ? true : false;
+        Debug.Log("lookAnswer: " + islookButton);
+
         SelectQuestion(jsonToLevelData);
 
     }
-    void getnextQuestionbuttom()
+    void GetnextQuestionbuttom()
     {
+        Debug.Log("nextQuestion");
+
         islookButton = false;
         rangeSum = Random.Range(0, questionsCount);
         SelectQuestion(jsonToLevelData);

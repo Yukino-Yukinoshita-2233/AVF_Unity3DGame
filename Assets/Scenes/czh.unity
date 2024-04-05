@@ -629,7 +629,7 @@ GameObject:
   - component: {fileID: 551727654}
   - component: {fileID: 551727653}
   m_Layer: 5
-  m_Name: Timu
+  m_Name: LV1Timu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
