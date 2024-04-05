@@ -57,7 +57,9 @@ public class LV1Maneger : MonoBehaviour
         Debug.Log("nextQuestion");
 
         islookButton = false;
-        rangeSum = Random.Range(0, questionsCount);
+        int rangex = Random.Range(0, questionsCount);
+        while(rangeSum == rangex) { rangex = Random.Range(0, questionsCount); }
+        rangeSum = rangex;
         SelectQuestion(jsonToLevelData);
     }
 }
