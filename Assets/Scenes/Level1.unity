@@ -215,6 +215,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 894822543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &102087081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1640037059847721605, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 847522675174142506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &201706614
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +644,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 887031719}
   m_SourcePrefab: {fileID: 100100000, guid: cc1454a9fdb3ef04d9eecb3015e3eee5, type: 3}
+--- !u!114 &859674261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2948483392358251411, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 847522675174142506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &887031718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3209267205934503243, guid: cc1454a9fdb3ef04d9eecb3015e3eee5,
@@ -652,6 +676,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: {fileID: 1910586987}
   answer: {fileID: 1074706618}
+  inputField: {fileID: 859674261}
+  resultText: {fileID: 1132871898}
+  AnswerTF: {fileID: 102087081}
   lookAnswerButtom: {fileID: 1363700031}
   nextQuestionButtom: {fileID: 1683665055}
 --- !u!1 &894822542
@@ -1046,6 +1073,18 @@ Transform:
 --- !u!114 &1074706618 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2328672437760254165, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 847522675174142506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1132871898 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5003984498164961977, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
     type: 3}
   m_PrefabInstance: {fileID: 847522675174142506}
   m_PrefabAsset: {fileID: 0}
@@ -2812,6 +2851,61 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1640037059847721605, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640037059847721605, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640037059847721605, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332822407727165880, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332822407727165880, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332822407727165880, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332822407727165880, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003984498164961977, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003984498164961977, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003984498164961977, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003984498164961977, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6606203120318680385, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
         type: 3}
       propertyPath: m_Pivot.x

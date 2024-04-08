@@ -52,9 +52,11 @@ public class LV1Maneger : MonoBehaviour
 
     void GetlookAnswerButtomdown()
     {
-        SelectQuestion(jsonToLevelData);
         islookButton = (islookButton == false);
-        AnswerTF.text = (islookButton == false) ? (AnswerTF.text = (isAnswerTrue == true) ? "答案正确！" : "答案错误，请重试。") : null;
+
+        SelectQuestion(jsonToLevelData);
+        AnswerTF.text = (islookButton == true) ? (AnswerTF.text = (isAnswerTrue == true) ? "答案正确！" : "答案错误，请重试。") : null;
+
 
     }
     void GetnextQuestionbuttom()
