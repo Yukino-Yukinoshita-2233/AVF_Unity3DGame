@@ -10,11 +10,16 @@ public class LV1Maneger : MonoBehaviour
     private JsonToLevelData jsonToLevelData;
     [SerializeField] Text question;
     [SerializeField] Text answer;
+    [SerializeField] InputField inputField;
+    [SerializeField] Text resultText;
+    [SerializeField] Text AnswerTF;
     [SerializeField] Button lookAnswerButtom;
     [SerializeField] Button nextQuestionButtom;
     bool islookButton = false;
+    bool isAnswerTrue = false;
     int rangeSum = 0;
     int questionsCount = 0;
+    
     private void Start()
     {
         //question = gameObject.GetComponent<Text>();
@@ -38,28 +43,30 @@ public class LV1Maneger : MonoBehaviour
         questionsCount = questions.Count;
         // 输出数据到场景
         question.text = questions[rangeSum];
-        if (islookButton == true) { answer.text = answers[rangeSum]; }
-        else { answer.text = null; }
+        answer.text = (islookButton == true) ? answers[rangeSum] : null;
+        isAnswerTrue = (resultText.text == answers[rangeSum]);
+
         Sun.TimeofDay = float.Parse(TimeofDay[rangeSum]);
         Sun.TimeofYear = float.Parse(TimeofYear[rangeSum]);
     }
 
     void GetlookAnswerButtomdown()
     {
-        islookButton = (islookButton == false) ? true : false;
-        Debug.Log("lookAnswer: " + islookButton);
-
         SelectQuestion(jsonToLevelData);
+        islookButton = (islookButton == false);
+        AnswerTF.text = (islookButton == false) ? (AnswerTF.text = (isAnswerTrue == true) ? "答案正确！" : "答案错误，请重试。") : null;
 
     }
     void GetnextQuestionbuttom()
     {
         Debug.Log("nextQuestion");
-
         islookButton = false;
         int rangex = Random.Range(0, questionsCount);
         while(rangeSum == rangex) { rangex = Random.Range(0, questionsCount); }
         rangeSum = rangex;
+        resultText.text = null;
+        AnswerTF.text = null;
+
         SelectQuestion(jsonToLevelData);
     }
 }
