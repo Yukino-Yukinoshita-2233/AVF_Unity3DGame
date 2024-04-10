@@ -3011,6 +3011,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LV1Question
       objectReference: {fileID: 0}
+    - target: {fileID: 9163966668111795560, guid: 951e1e6bc23dcf1439b6e11ac1b8e2ff,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
