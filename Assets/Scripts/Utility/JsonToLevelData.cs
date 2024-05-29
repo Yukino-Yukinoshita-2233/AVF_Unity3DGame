@@ -7,6 +7,10 @@ public class JsonToLevelData
     private List<Data> data = new List<Data>();
     private List<string> question = new List<string>();
     private List<string> answer = new List<string>();
+    private List<string> answerA = new List<string>();
+    private List<string> answerB = new List<string>();
+    private List<string> answerC = new List<string>();
+    private List<string> answerD = new List<string>();
     private List<string> timeofday = new List<string>();
     private List<string> timeofyear = new List<string>();
 
@@ -36,21 +40,21 @@ public class JsonToLevelData
     {
         return answer;
     }
-    public List<string> GetAnswer()
+    public List<string> GetAnswerA()
     {
-        return answer;
+        return answerA;
     }
-    public List<string> GetAnswer()
+    public List<string> GetAnswerB()
     {
-        return answer;
+        return answerB;
     }
-    public List<string> GetAnswer()
+    public List<string> GetAnswerC()
     {
-        return answer;
+        return answerC;
     }
-    public List<string> GetAnswer()
+    public List<string> GetAnswerD()
     {
-        return answer;
+        return answerD;
     }
 
     public List<string> GetTimeofDay()

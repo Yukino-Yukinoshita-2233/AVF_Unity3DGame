@@ -14,7 +14,7 @@ public class LV1Maneger : MonoBehaviour
     [SerializeField] Text answerB;
     [SerializeField] Text answerC;
     [SerializeField] Text answerD;
-    [SerializeField] InputField inputField;
+    //[SerializeField] InputField inputField;
     [SerializeField] Text resultText;
     [SerializeField] Text AnswerTF;
     [SerializeField] Button lookAnswerButtom;
@@ -42,12 +42,20 @@ public class LV1Maneger : MonoBehaviour
         // 获取问题和答案列表
         var questions = jsonToLevelData.GetQuestion();
         var answers = jsonToLevelData.GetAnswer();
+        var answersAs = jsonToLevelData.GetAnswerA();
+        var answersBs = jsonToLevelData.GetAnswerB();
+        var answersCs = jsonToLevelData.GetAnswerC();
+        var answersDs = jsonToLevelData.GetAnswerD();
         var TimeofDay = jsonToLevelData.GetTimeofDay();
         var TimeofYear = jsonToLevelData.GetTimeofYear();
         questionsCount = questions.Count;
         // 输出数据到场景
         question.text = questions[rangeSum];
         answer.text = (islookButton == true) ? answers[rangeSum] : null;
+        answerA.text = answersAs[rangeSum];
+        answerB.text = answersBs[rangeSum];
+        answerC.text = answersCs[rangeSum];
+        answerD.text = answersDs[rangeSum];
         isAnswerTrue = (resultText.text == answers[rangeSum]);
 
         Sun.TimeofDay = float.Parse(TimeofDay[rangeSum]);
