@@ -1,26 +1,62 @@
 [
-    {
-        "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
-        "Answer": "春分",
-        "TimeofDay": "12",
-        "TimeofYear": "80"
-    },
-    {
-        "Question": "《周髀算经》卷上：故冬至日晷丈三尺五寸，夏至日晷尺六寸。冬至日晷长，夏至日晷短。",
-        "Answer": "夏至",
-        "TimeofDay": "12",
-        "TimeofYear": "172"
-    },
-    {
-        "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
-        "Answer": "秋分",
-        "TimeofDay": "12",
-        "TimeofYear": "265"
-    },
-    {
-        "Question": "《周髀算经》卷上：故冬至日晷丈三尺五寸，夏至日晷尺六寸。冬至日晷长，夏至日晷短。",
-        "Answer": "冬至",
-        "TimeofDay": "12",
-        "TimeofYear": "356"
-    }
+  {
+    "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
+    "AAnswer": "春分",
+    "BAnswer": "夏至",
+    "CAnswer": "秋分",
+    "DAnswer": "冬至",
+    "Answer": "春分",
+    "TimeofDay": "12",
+    "TimeofYear": "80"
+  },
+  {
+    "Question": "《周髀算经》卷上：故冬至日晷丈三尺五寸，夏至日晷尺六寸。冬至日晷长，夏至日晷短。",
+    "AAnswer": "春分",
+    "BAnswer": "夏至",
+    "CAnswer": "秋分",
+    "DAnswer": "冬至",
+    "Answer": "夏至",
+    "TimeofDay": "12",
+    "TimeofYear": "172"
+  },
+  {
+    "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
+    "AAnswer": "春分",
+    "BAnswer": "夏至",
+    "CAnswer": "秋分",
+    "DAnswer": "冬至",
+    "Answer": "秋分",
+    "TimeofDay": "12",
+    "TimeofYear": "265"
+  },
+  {
+    "Question": "《周髀算经》卷上：故冬至日晷丈三尺五寸，夏至日晷尺六寸。冬至日晷长，夏至日晷短。",
+    "AAnswer": "春分",
+    "BAnswer": "夏至",
+    "CAnswer": "秋分",
+    "DAnswer": "冬至",
+    "Answer": "冬至",
+    "TimeofDay": "12",
+    "TimeofYear": "356"
+  },
+  {
+    "Question": "1",
+    "AAnswer": "",
+    "BAnswer": "",
+    "CAnswer": "",
+    "DAnswer": "",
+    "Answer": "",
+    "TimeofDay": "",
+    "TimeofYear": ""
+  },
+  {
+    "Question": "2",
+    "AAnswer": "",
+    "BAnswer": "",
+    "CAnswer": "",
+    "DAnswer": "",
+    "Answer": "",
+    "TimeofDay": "",
+    "TimeofYear": ""
+  }
 ]

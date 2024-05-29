@@ -30,7 +30,7 @@ public class LV1Maneger : MonoBehaviour
         SelectQuestion(jsonToLevelData);
         lookAnswerButtom.onClick.AddListener(GetlookAnswerButtomdown);
         nextQuestionButtom.onClick.AddListener(GetnextQuestionbuttom);
-
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void SelectQuestion(JsonToLevelData jsonToLevelData)
