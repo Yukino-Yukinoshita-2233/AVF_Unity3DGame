@@ -17,6 +17,10 @@ public class JsonToLevelData
         {
             question.Add(item.Question);
             answer.Add(item.Answer);
+            answerA.Add(item.AnswerA);
+            answerB.Add(item.AnswerB);
+            answerC.Add(item.AnswerC);
+            answerD.Add(item.AnswerD);
             timeofday.Add(item.TimeofDay);
             timeofyear.Add(item.TimeofYear);
         }
@@ -28,6 +32,22 @@ public class JsonToLevelData
         return question;
     }
 
+    public List<string> GetAnswer()
+    {
+        return answer;
+    }
+    public List<string> GetAnswer()
+    {
+        return answer;
+    }
+    public List<string> GetAnswer()
+    {
+        return answer;
+    }
+    public List<string> GetAnswer()
+    {
+        return answer;
+    }
     public List<string> GetAnswer()
     {
         return answer;
