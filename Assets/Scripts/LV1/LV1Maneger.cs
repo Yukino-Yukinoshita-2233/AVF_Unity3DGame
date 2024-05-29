@@ -10,6 +10,10 @@ public class LV1Maneger : MonoBehaviour
     private JsonToLevelData jsonToLevelData;
     [SerializeField] Text question;
     [SerializeField] Text answer;
+    [SerializeField] Text answerA;
+    [SerializeField] Text answerB;
+    [SerializeField] Text answerC;
+    [SerializeField] Text answerD;
     [SerializeField] InputField inputField;
     [SerializeField] Text resultText;
     [SerializeField] Text AnswerTF;
