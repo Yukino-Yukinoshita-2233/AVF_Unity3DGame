@@ -9,8 +9,15 @@ public class RaycastFromCenter : MonoBehaviour
     public EventSystem eventSystem;
     public GraphicRaycaster raycaster;
 
+    private void Start()
+    {
+        ToHideCursor();
+
+
+    }
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0)) // 当鼠标左键被按下时
         {
             // 从屏幕中心位置创建射线
@@ -35,5 +42,10 @@ public class RaycastFromCenter : MonoBehaviour
                 }
             }
         }
+    }
+
+    void ToHideCursor()
+    {
+        Cursor.visible = false;
     }
 }

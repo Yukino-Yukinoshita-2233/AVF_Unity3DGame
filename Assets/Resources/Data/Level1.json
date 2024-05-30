@@ -1,62 +1,62 @@
 [
   {
     "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
+    "Answer": "春分",
     "AnswerA": "春分",
     "AnswerB": "夏至",
     "AnswerC": "秋分",
     "AnswerD": "冬至",
-    "Answer": "春分",
     "TimeofDay": "12",
     "TimeofYear": "80"
   },
   {
-    "Question": "《周髀算经》卷上：故冬至日晷丈三尺五寸，夏至日晷尺六寸。冬至日晷长，夏至日晷短。",
+    "Question": "《周髀算经》卷上：“故冬至日晷丈三尺五寸，夏至日晷尺六寸。冬至日晷长，夏至日晷短。”根据该典故来判断现在是什么气节？",
+    "Answer": "夏至",
     "AnswerA": "春分",
     "AnswerB": "夏至",
     "AnswerC": "秋分",
     "AnswerD": "冬至",
-    "Answer": "夏至",
     "TimeofDay": "12",
     "TimeofYear": "172"
   },
   {
     "Question": "根据日晷的影子所在的位置，判断现在是什么节气？",
+    "Answer": "秋分",
     "AnswerA": "春分",
     "AnswerB": "夏至",
     "AnswerC": "秋分",
     "AnswerD": "冬至",
-    "Answer": "秋分",
     "TimeofDay": "12",
     "TimeofYear": "265"
   },
   {
-    "Question": "《周髀算经》卷上：故冬至日晷丈三尺五寸，夏至日晷尺六寸。冬至日晷长，夏至日晷短。",
+    "Question": "《周髀算经》卷上：“故冬至日晷丈三尺五寸，夏至日晷尺六寸。冬至日晷长，夏至日晷短。”根据该典故来判断现在是什么气节？",
+    "Answer": "冬至",
     "AnswerA": "春分",
     "AnswerB": "夏至",
     "AnswerC": "秋分",
     "AnswerD": "冬至",
-    "Answer": "冬至",
     "TimeofDay": "12",
     "TimeofYear": "356"
   },
   {
-    "Question": "1",
-    "AnswerA": "",
-    "AnswerB": "",
-    "AnswerC": "",
-    "AnswerD": "",
-    "Answer": "",
-    "TimeofDay": "",
-    "TimeofYear": ""
+    "Question": "根据日晷的影子所在的时辰，判断现在大概是什么时间？",
+    "Answer": "11-13点",
+    "AnswerA": "9-11点",
+    "AnswerB": "11-13点",
+    "AnswerC": "13-15点",
+    "AnswerD": "15-17点",
+    "TimeofDay": "12",
+    "TimeofYear": "172"
   },
   {
-    "Question": "2",
-    "AnswerA": "",
-    "AnswerB": "",
-    "AnswerC": "",
-    "AnswerD": "",
-    "Answer": "",
-    "TimeofDay": "",
-    "TimeofYear": ""
+    "Question": "根据日晷的影子所在的位置，判断现在是什么时辰？",
+    "Answer": "申",
+    "AnswerA": "巳",
+    "AnswerB": "午",
+    "AnswerC": "未",
+    "AnswerD": "申",
+    "TimeofDay": "16",
+    "TimeofYear": "355"
   }
 ]
