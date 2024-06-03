@@ -11,7 +11,10 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField]
     private RawImage rawImage;
     [SerializeField]
-    Vector2 basicSize;
+    private Vector2 basicSize;
+
+    private float newHeight;
+    private float newWidth;
 
     private void Awake()
     {
@@ -28,6 +31,22 @@ public class PuzzleManager : MonoBehaviour
         texture2D.LoadImage(fileData);
         rawImage.texture = texture2D;
         TextureScaleResize(texture2D);
+
+        newHeight = (int)(newHeight / 170);
+        newWidth = (int)(newWidth / 170);
+
+        if (newWidth % 2 != 0)
+        {
+            newWidth += 1;
+        }
+        if (newHeight % 2 != 0)
+        {
+            newHeight += 1;
+        }
+
+        PuzzlePool.Instance.CreatePuzzle((int)newHeight, (int)newWidth);
+        rawImage.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth * 170, newHeight * 170);
+
     }
 
     void TextureScaleResize(Texture2D texture2D)
@@ -49,9 +68,7 @@ public class PuzzleManager : MonoBehaviour
             ratio = expand == true ? longSide / basicSize.y : basicSize.y / longSide;
         }
 
-        var newWidth = expand == true ? texture2D.width / ratio : texture2D.width * ratio;
-        var newHeight = expand == true ? texture2D.height / ratio : texture2D.height * ratio;
-
-        rawImage.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, newHeight);
+        newWidth = expand == true ? texture2D.width / ratio : texture2D.width * ratio;
+        newHeight = expand == true ? texture2D.height / ratio : texture2D.height * ratio;
     }
 }
