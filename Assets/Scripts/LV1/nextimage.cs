@@ -15,15 +15,24 @@ public class nextimage : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             SwitchToNextImage();
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SwitchToLastImage();
         }
     }
 
     public void SwitchToNextImage()
     {
         currentIndex = (currentIndex + 1) % images.Length; // 切换到下一个图片索引
+        UpdateImages();
+    }
+    public void SwitchToLastImage()
+    {
+        currentIndex = (currentIndex - 1) % images.Length; // 切换到上一个图片索引
         UpdateImages();
     }
 

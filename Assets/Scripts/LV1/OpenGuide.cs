@@ -15,7 +15,7 @@ public class OpenGuide : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             if (canvas != null)
             {

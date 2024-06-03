@@ -12,8 +12,6 @@ public class RaycastFromCenter : MonoBehaviour
     private void Start()
     {
         ToHideCursor();
-
-
     }
     void Update()
     {
