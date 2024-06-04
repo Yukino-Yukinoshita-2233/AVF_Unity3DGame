@@ -26,11 +26,11 @@ public class PuzzlePool : MonoBehaviour
     private List<GameObject> recyclePiece = new List<GameObject>();
 
     [SerializeField]
-    private Vector2 textureStartPos;
+    private Vector2 textureStartPos = new Vector2(65, -65);
     [SerializeField]
-    private Vector2 offsetX;
+    private Vector2 offsetX = new Vector2(170, 0);
     [SerializeField]
-    private Vector2 offsetY;
+    private Vector2 offsetY = new Vector2(0, -170);
     private Vector2 tempV2;
     private Vector2 intervalSize;
     private Texture2D texture2D;

@@ -815,7 +815,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1178223416}
   - component: {fileID: 1178223418}
-  - component: {fileID: 1178223420}
   - component: {fileID: 1178223417}
   - component: {fileID: 1178223419}
   m_Layer: 0
@@ -884,8 +883,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd90bcf4b284e9a4cb78ec4f8ad950a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rawImage: {fileID: 0}
-  basicSize: {x: 0, y: 0}
+  rawImage: {fileID: 1165242375}
+  basicSize: {x: 1160, y: 588}
+  intervelSize: 170
 --- !u!114 &1178223419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -899,18 +899,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Puzzle: {fileID: 2800000, guid: fdb948f4fb43170459b743ad5a33ee57, type: 3}
---- !u!114 &1178223420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178223415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73ccfb5e24f1cf34e85b92810dff0858, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1405786607
 GameObject:
   m_ObjectHideFlags: 0

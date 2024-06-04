@@ -16,6 +16,7 @@ public class PuzzleManager : MonoBehaviour
     private float newHeight;
     private float newWidth;
 
+    [SerializeField]
     private float intervelSize = 170f;
 
     private void Awake()
