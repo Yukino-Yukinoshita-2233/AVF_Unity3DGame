@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class TestPuzzle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private Texture2D Puzzle;
 
-    // Update is called once per frame
-    void Update()
+    [ContextMenu("Load Puzzle")]
+    public void LoadPuzzle()
     {
-        
+        if (Puzzle != null)
+        {
+            PuzzleManager.Instance.LoadTexture(Puzzle);
+        }
     }
 }

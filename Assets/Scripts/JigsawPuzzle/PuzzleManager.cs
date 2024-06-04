@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PuzzleManager : MonoBehaviour
 {
-    public static PuzzleManager instance;
+    public static PuzzleManager Instance;
 
     [SerializeField]
     private RawImage rawImage;
@@ -20,17 +20,14 @@ public class PuzzleManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
     }
 
-    void LoadTexture(string path)
+    public void LoadTexture(Texture2D texture2D)
     {
-        Texture2D texture2D = new Texture2D(1, 1);
-        byte[] fileData = File.ReadAllBytes(path);
-        texture2D.LoadImage(fileData);
         rawImage.texture = texture2D;
         TextureScaleResize(texture2D);
 
