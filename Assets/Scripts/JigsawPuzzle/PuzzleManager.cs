@@ -16,6 +16,8 @@ public class PuzzleManager : MonoBehaviour
     private float newHeight;
     private float newWidth;
 
+    private float intervelSize = 170f;
+
     private void Awake()
     {
         if (instance == null)
@@ -32,8 +34,8 @@ public class PuzzleManager : MonoBehaviour
         rawImage.texture = texture2D;
         TextureScaleResize(texture2D);
 
-        newHeight = (int)(newHeight / 170);
-        newWidth = (int)(newWidth / 170);
+        newHeight = (int)(newHeight / intervelSize);
+        newWidth = (int)(newWidth / intervelSize);
 
         if (newWidth % 2 != 0)
         {
@@ -44,8 +46,8 @@ public class PuzzleManager : MonoBehaviour
             newHeight += 1;
         }
 
-        PuzzlePool.Instance.CreatePuzzle((int)newHeight, (int)newWidth);
-        rawImage.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth * 170, newHeight * 170);
+        PuzzlePool.Instance.CreatePuzzle((int)newHeight, (int)newWidth, texture2D, intervelSize);
+        rawImage.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth * intervelSize, newHeight * intervelSize);
 
     }
 

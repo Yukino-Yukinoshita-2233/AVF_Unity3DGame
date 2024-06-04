@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PuzzlePool : MonoBehaviour
 {
@@ -15,6 +16,16 @@ public class PuzzlePool : MonoBehaviour
     private Transform canvasTransform;
     private List<GameObject> gridList = new List<GameObject>();
 
+    [SerializeField]
+    private Vector2 textureStartPos;
+    [SerializeField]
+    private Vector2 offsetX;
+    [SerializeField]
+    private Vector2 offsetY;
+    private Vector2 tempV2;
+    private Vector2 intervalSize;
+    private Texture2D texture2D;
+
     private void Awake()
     {
         if (Instance == null)
@@ -23,9 +34,12 @@ public class PuzzlePool : MonoBehaviour
         }
     }
 
-    public void CreatePuzzle(int row, int col)
+    public void CreatePuzzle(int row, int col, Texture2D texture, float interval)
     {
+        texture2D = texture;
+        tempV2 = textureStartPos;
         int totalGridNum = row * col;
+        intervalSize = new Vector2(col * interval, row * interval);
         for (int i = 0; i < totalGridNum; i++)
         {
             gridList.Add(Instantiate(grid, puzzlePanel));
@@ -45,7 +59,7 @@ public class PuzzlePool : MonoBehaviour
     {
         int index = 0;
         GameObject piece = null;
-
+        RectTransform temp;
         for (int i = 0; i < row; i++)
         {
             for (int j = 0; j < col; j++)
@@ -71,8 +85,14 @@ public class PuzzlePool : MonoBehaviour
                 }
                 piece.GetComponent<RectTransform>().anchoredPosition = gridList[index].transform.position;
                 piece.transform.SetParent(canvasTransform);
+                piece.transform.Find("Mask/texture").GetComponent<RawImage>().texture = texture2D;
+                temp = piece.transform.Find("Mask/texture").GetComponent<RectTransform>();
+                temp.sizeDelta = intervalSize;
                 index++;
+                tempV2 += offsetX;
             }
+            tempV2.x = textureStartPos.x;
+            tempV2 += offsetY;
         }
     }
 
@@ -109,7 +129,7 @@ public class PuzzlePool : MonoBehaviour
         }
 
         // Left Side
-        else if (j == 0 && i != 0 && i != col - 1)
+        else if (j == 0 && i != 0 && j != col - 1)
         {
             if (i % 2 != 0)
             {
@@ -123,7 +143,7 @@ public class PuzzlePool : MonoBehaviour
         }
 
         // Right Side
-        else if (j == col - 1 && i != 0 && i != col - 1)
+        else if (j == col - 1 && i != 0 && i != row - 1)
         {
             if (i % 2 != 0)
             {
