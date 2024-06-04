@@ -1,8 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum PieceType
+{
+    Grid, TL, T1, T2, TR, L1, C1, C2, R1, L2, R2, BL, B1, B2, BR
+}
 
 public class PuzzlePool : MonoBehaviour
 {
@@ -15,6 +21,9 @@ public class PuzzlePool : MonoBehaviour
     [SerializeField]
     private Transform canvasTransform;
     private List<GameObject> gridList = new List<GameObject>();
+
+    private Dictionary<string, List<GameObject>> pieceDic = new Dictionary<string, List<GameObject>>();
+    private List<GameObject> recyclePiece = new List<GameObject>();
 
     [SerializeField]
     private Vector2 textureStartPos;
@@ -40,9 +49,14 @@ public class PuzzlePool : MonoBehaviour
         tempV2 = textureStartPos;
         int totalGridNum = row * col;
         intervalSize = new Vector2(col * interval, row * interval);
+        GameObject obj;
         for (int i = 0; i < totalGridNum; i++)
         {
-            gridList.Add(Instantiate(grid, puzzlePanel));
+            // gridList.Add(Instantiate(grid, puzzlePanel));
+            obj = GetPiece(PieceType.Grid, i);
+            obj.transform.SetParent(puzzlePanel);
+            gridList.Add(obj);
+            recyclePiece.Add(obj);
         }
 
         StartCoroutine(ICreatePieces(row, col));
@@ -64,13 +78,13 @@ public class PuzzlePool : MonoBehaviour
         {
             for (int j = 0; j < col; j++)
             {
-                if (CheckCorner(i, j, row, col, ref piece))
+                if (CheckCorner(i, j, row, col, ref piece, index))
                 {
-
+                    // 求角
                 }
-                else if (CheckSide(i, j, row, col, ref piece))
+                else if (CheckSide(i, j, row, col, ref piece, index))
                 {
-
+                    // 求边
                 }
                 else
                 {
@@ -96,19 +110,21 @@ public class PuzzlePool : MonoBehaviour
         }
     }
 
-    private bool CheckSide(int i, int j, int row, int col, ref GameObject obj)
+    private bool CheckSide(int i, int j, int row, int col, ref GameObject obj, int index)
     {
         // Top Side
         if (i == 0 && j != 0 && j != col - 1)
         {
             if (j % 2 != 0)
             {
-                obj = Instantiate(T1);
+                // obj = Instantiate(T1);
+                obj = GetPiece(PieceType.T1, index);
             }
 
             else
             {
-                obj = Instantiate(T2);
+                // obj = Instantiate(T2);
+                obj = GetPiece(PieceType.T2, index);
             }
 
             return true;
@@ -119,11 +135,13 @@ public class PuzzlePool : MonoBehaviour
         {
             if (j % 2 != 0)
             {
-                obj = Instantiate(B1);
+                // obj = Instantiate(B1);
+                obj = GetPiece(PieceType.B1, index);
             }
             else
             {
-                obj = Instantiate(B2);
+                // obj = Instantiate(B2);
+                obj = GetPiece(PieceType.B2, index);
             }
             return true;
         }
@@ -133,11 +151,13 @@ public class PuzzlePool : MonoBehaviour
         {
             if (i % 2 != 0)
             {
-                obj = Instantiate(L1);
+                // obj = Instantiate(L1);
+                obj = GetPiece(PieceType.L1, index);
             }
             else
             {
-                obj = Instantiate(L2);
+                // obj = Instantiate(L2);
+                obj = GetPiece(PieceType.L2, index);
             }
             return true;
         }
@@ -147,11 +167,13 @@ public class PuzzlePool : MonoBehaviour
         {
             if (i % 2 != 0)
             {
-                obj = Instantiate(R1);
+                // obj = Instantiate(R1);
+                obj = GetPiece(PieceType.R1, index);
             }
             else
             {
-                obj = Instantiate(R2);
+                // obj = Instantiate(R2);
+                obj = GetPiece(PieceType.R2, index);
             }
             return true;
         }
@@ -160,36 +182,127 @@ public class PuzzlePool : MonoBehaviour
         return false;
     }
 
-    private bool CheckCorner(int i, int j, int row, int col, ref GameObject obj)
+    private bool CheckCorner(int i, int j, int row, int col, ref GameObject obj, int index)
     {
         // Top Left Side
         if (i == 0 && j == 0)
         {
-            obj = Instantiate(TL);
+            // obj = Instantiate(TL);
+            obj = GetPiece(PieceType.TL, index);
             return true;
         }
 
         // Top Right Side
         else if (i == 0 && j == col - 1)
         {
-            obj = Instantiate(TR);
+            // obj = Instantiate(TR);
+            obj = GetPiece(PieceType.TR, index);
             return true;
         }
 
         // Bottom Left Side
         else if (j == 0 && i == row - 1)
         {
-            obj = Instantiate(BL);
+            // obj = Instantiate(BL);
+            obj = GetPiece(PieceType.BL, index);
             return true;
         }
 
         // Bottom Right Side
         else if (j == col - 1 && i == row - 1)
         {
-            obj = Instantiate(BR);
+            // obj = Instantiate(BR);
+            obj = GetPiece(PieceType.BR, index);
             return true;
         }
 
         return false;
+    }
+
+    private GameObject GetPiece(PieceType pieceType, int id)
+    {
+        string str = pieceType.ToString();
+        GameObject gobj = null;
+        if (pieceDic.ContainsKey(str))
+        {
+            bool isFind = false;
+            foreach (var item in pieceDic[str])
+            {
+                if (!item.activeSelf)
+                {
+                    isFind = true;
+                    gobj = item;
+                    break;
+                }
+            }
+
+            if (!isFind)
+            {
+                gobj = CreatePiece(pieceType);
+                pieceDic[str].Add(gobj);
+            }
+        }
+        else
+        {
+            List<GameObject> list = new List<GameObject>();
+            gobj = CreatePiece(pieceType);
+            list.Add(CreatePiece(pieceType));
+            pieceDic.Add(str, list);
+        }
+
+        gobj.name = id.ToString();
+        gobj.SetActive(true);
+        return gobj;
+    }
+
+    private GameObject CreatePiece(PieceType pieceType)
+    {
+        switch (pieceType)
+        {
+            case PieceType.Grid:
+                return Instantiate(grid);
+            case PieceType.C1:
+                return Instantiate(C1);
+            case PieceType.C2:
+                return Instantiate(C2);
+            case PieceType.T1:
+                return Instantiate(T1);
+            case PieceType.T2:
+                return Instantiate(T2);
+            case PieceType.B1:
+                return Instantiate(B1);
+            case PieceType.B2:
+                return Instantiate(B2);
+            case PieceType.R1:
+                return Instantiate(R1);
+            case PieceType.R2:
+                return Instantiate(R2);
+            case PieceType.L1:
+                return Instantiate(L1);
+            case PieceType.L2:
+                return Instantiate(L2);
+            case PieceType.TL:
+                return Instantiate(TL);
+            case PieceType.TR:
+                return Instantiate(TR);
+            case PieceType.BL:
+                return Instantiate(BL);
+            case PieceType.BR:
+                return Instantiate(BR);
+            default:
+                return null;
+        }
+    }
+
+    [ContextMenu("RecyclePiece")]
+    public void RecyclePice()
+    {
+        foreach (var p in recyclePiece)
+        {
+            p.SetActive(false);
+        }
+
+        gridList.Clear();
+        recyclePiece.Clear();
     }
 }
