@@ -673,9 +673,9 @@ MonoBehaviour:
   BR: {fileID: 6425725558726754891, guid: ed02dd267bbee6b499e7ab40fe9dddf0, type: 3}
   GridPanel: {fileID: 1165242374}
   PiecePanel: {fileID: 1151803769}
-  textureStartPos: {x: 0, y: 0}
-  offsetX: {x: -84, y: -50}
-  offsetY: {x: 0, y: 84}
+  textureStartPos: {x: 425, y: -255}
+  offsetX: {x: -170, y: 0}
+  offsetY: {x: 0, y: 170}
 --- !u!114 &1178223418
 MonoBehaviour:
   m_ObjectHideFlags: 0
