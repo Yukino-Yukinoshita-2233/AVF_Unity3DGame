@@ -116,6 +116,8 @@ public class PuzzlePool : MonoBehaviour
             }
             tempV2.x = textureStartPos.x;
             tempV2 += offsetY;
+
+            Debug.Log(tempV2);
         }
     }
 
