@@ -8,10 +8,14 @@ public class PuzzleManager : MonoBehaviour
 {
     public static PuzzleManager Instance;
 
-    [SerializeField]
-    private RawImage rawImage;
+    public Texture2D TestPuzzle;
+    public RawImage RawImage;
+
     [SerializeField]
     private Vector2 basicSize;
+
+    private int[] puzzle;
+    private int maxgridID = 99999;
 
     private float newHeight;
     private float newWidth;
@@ -27,11 +31,17 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
+    [ContextMenu("LoadTexture")]
+    public void LoadTextureTest()
+    {
+        LoadTexture(TestPuzzle);
+    }
+
     public void LoadTexture(Texture2D texture2D)
     {
-        rawImage.texture = texture2D;
+        RawImage.texture = texture2D;
         TextureScaleResize(texture2D);
-
+        RawImage.color = new Color(1, 1, 1, 0.7f);
         newHeight = (int)(newHeight / intervelSize);
         newWidth = (int)(newWidth / intervelSize);
 
@@ -45,8 +55,8 @@ public class PuzzleManager : MonoBehaviour
         }
 
         PuzzlePool.Instance.CreatePuzzle((int)newHeight, (int)newWidth, texture2D, intervelSize);
-        rawImage.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth * intervelSize, newHeight * intervelSize);
-
+        RawImage.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth * intervelSize, newHeight * intervelSize);
+        InitPuzzleGrid();
     }
 
     void TextureScaleResize(Texture2D texture2D)
@@ -71,4 +81,50 @@ public class PuzzleManager : MonoBehaviour
         newWidth = expand == true ? texture2D.width / ratio : texture2D.width * ratio;
         newHeight = expand == true ? texture2D.height / ratio : texture2D.height * ratio;
     }
+
+    private void InitPuzzleGrid()
+    {
+        puzzle = null;
+        puzzle = new int[(int)(newWidth * newHeight)];
+        for (int i = 0; i < puzzle.Length; i++)
+        {
+            puzzle[i] = maxgridID;
+        }
+    }
+
+    public bool IstherePiece(int gridID)
+    {
+        if (puzzle.Length <= gridID)
+        {
+            return false;
+        }
+        if (puzzle[gridID] != maxgridID)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SetPiece(int gridID, int pieceID)
+    {
+        puzzle[gridID] = pieceID;
+    }
+
+    public void OutPiece(int gridID)
+    {
+        puzzle[gridID] = maxgridID;
+    }
+
+    public bool IsFinish()
+    {
+        for (int i = 0; i < puzzle.Length; i++)
+        {
+            if (puzzle[i] >= i + 1)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

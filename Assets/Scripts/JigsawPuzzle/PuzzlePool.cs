@@ -17,9 +17,9 @@ public class PuzzlePool : MonoBehaviour
     [SerializeField]
     private GameObject grid, TL, T1, T2, TR, L1, C1, C2, R1, L2, R2, BL, B1, B2, BR;
     [SerializeField]
-    private Transform puzzlePanel;
+    private Transform GridPanel;
     [SerializeField]
-    private Transform canvasTransform;
+    private Transform PiecePanel;
     private List<GameObject> gridList = new List<GameObject>();
 
     private Dictionary<string, List<GameObject>> pieceDic = new Dictionary<string, List<GameObject>>();
@@ -52,9 +52,9 @@ public class PuzzlePool : MonoBehaviour
         GameObject obj;
         for (int i = 0; i < totalGridNum; i++)
         {
-            // gridList.Add(Instantiate(grid, puzzlePanel));
+            // gridList.Add(Instantiate(grid, GridPanel));
             obj = GetPiece(PieceType.Grid, i);
-            obj.transform.SetParent(puzzlePanel);
+            obj.transform.SetParent(GridPanel);
             gridList.Add(obj);
             recyclePiece.Add(obj);
         }
@@ -65,7 +65,7 @@ public class PuzzlePool : MonoBehaviour
 
     IEnumerator ICreatePieces(int row, int col)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         CreatePieces(row, col);
     }
 
@@ -90,20 +90,29 @@ public class PuzzlePool : MonoBehaviour
                 {
                     if ((i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0))
                     {
-                        piece = Instantiate(C1);
+                        // piece = Instantiate(C1);
+                        piece = GetPiece(PieceType.C1, index);
                     }
                     else
                     {
-                        piece = Instantiate(C2);
+                        // piece = Instantiate(C2);
+                        piece = GetPiece(PieceType.C2, index);
                     }
                 }
+                piece.transform.SetParent(PiecePanel);
+
                 piece.GetComponent<RectTransform>().anchoredPosition = gridList[index].transform.position;
-                piece.transform.SetParent(canvasTransform);
-                piece.transform.Find("Mask/texture").GetComponent<RawImage>().texture = texture2D;
-                temp = piece.transform.Find("Mask/texture").GetComponent<RectTransform>();
+                piece.transform.Find("Mask/Texture").GetComponent<RawImage>().texture = texture2D;
+
+                temp = piece.transform.Find("Mask/Texture").GetComponent<RectTransform>();
                 temp.sizeDelta = intervalSize;
-                index++;
+
+                temp.anchoredPosition = tempV2;
                 tempV2 += offsetX;
+
+                index++;
+
+                recyclePiece.Add(piece);
             }
             tempV2.x = textureStartPos.x;
             tempV2 += offsetY;
@@ -246,7 +255,7 @@ public class PuzzlePool : MonoBehaviour
         {
             List<GameObject> list = new List<GameObject>();
             gobj = CreatePiece(pieceType);
-            list.Add(CreatePiece(pieceType));
+            list.Add(gobj);
             pieceDic.Add(str, list);
         }
 
