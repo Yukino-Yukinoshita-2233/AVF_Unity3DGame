@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: c732593fe76e5a84197f9cd13963f706
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 594185430a5cdec409ed146f4b9b9c5d
+  - enabled: 1
+    path: Assets/Scenes/JigsawPuzzle.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
